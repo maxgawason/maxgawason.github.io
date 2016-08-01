@@ -44,14 +44,15 @@
   </nav>
 <body>
   <div class="container" style = "padding: 50px;">
-    <button onclick="test()">Submit</button>
-    <script>
-        function test()
-        {
-            var foo = prompt("Give me input");
-            document.write(foo);
-        }
-    </script>
+<form id="form" onsubmit="return false;">
+    <input type="text" id="userInput" />
+    <input type="submit" onclick="othername();" />
+</form>
+
+function othername() {
+    var input = document.getElementById("userInput").value;
+    alert(input);
+}
 </div>
 </body>
 
