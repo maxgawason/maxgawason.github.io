@@ -44,14 +44,15 @@
   </nav>
 <body>
   <div class="container" style = "padding: 50px;">
+    <h1>ROT13 Decrypter</h1>
 <form id="form" onsubmit="return false;">
     <input type="text" id="userInput" />
-    <input type="submit" onclick="rot13();" />
+    <input type="submit" onclick="rot13Decrypter();" />
 </form>
-<p id = "rot13Output"></p>
+<p id = "rot13DecrypterOutput"></p>
 
 <script>
-function rot13() {
+function rot13Decrypter() {
     var str = document.getElementById("userInput").value;
       arr = str.split("");
   for (i = 0; i < str.length; i++) {
@@ -70,7 +71,37 @@ function rot13() {
     arr[i] = String.fromCharCode(arr[i]);
   }
   str = arr.join("");
-  document.getElementById("rot13Output").innerHTML = str;
+  document.getElementById("rot13DecrypterOutput").innerHTML = str;
+}
+</script>
+
+    <h1>ROT13 Encrypter</h1>
+<form id="form" onsubmit="return false;">
+    <input type="text" id="userInput2" />
+    <input type="submit" onclick="rot13Encrypter();" />
+</form>
+<p id = "rot13EncrypterOutput"></p>
+<script>
+function rot13Encrypter() {
+    var str = document.getElementById("userInput2").value;
+      arr = str.split("");
+  for (i = 0; i < str.length; i++) {
+    arr[i] = arr[i].charCodeAt();
+  }
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > 90 || arr[i] < 65) {
+      arr[i] = arr[i];
+    } else if (arr[i] + 13 <= 90) {
+      arr[i] = arr[i] + 13;
+    } else if (arr[i] + 13 > 90) {
+      arr[i] = arr[i] + 13 - 90 + 64;
+    }
+  } 
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = String.fromCharCode(arr[i]);
+  }
+  str = arr.join("");
+  document.getElementById("rot13EncrypterOutput").innerHTML = str;
 }
 </script>
 </div>
