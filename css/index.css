@@ -1,0 +1,12 @@
+#picOfMe {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+@media screen and (mid-width: 480px) {
+  #picOfMe {
+    width: 30%
+    float: right;
+  }
+}
