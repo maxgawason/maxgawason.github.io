@@ -48,6 +48,7 @@
     <input type="text" id="userInput" />
     <input type="submit" onclick="rot13();" />
 </form>
+<p id = "rot13Output"></p>
 
 <script>
 function rot13() {
@@ -69,7 +70,7 @@ function rot13() {
     arr[i] = String.fromCharCode(arr[i]);
   }
   str = arr.join("");
-  document.write(str);
+  document.getElementById("rot13Output").innerHTML = str;
 }
 </script>
 </div>
