@@ -46,13 +46,30 @@
   <div class="container" style = "padding: 50px;">
 <form id="form" onsubmit="return false;">
     <input type="text" id="userInput" />
-    <input type="submit" onclick="othername();" />
+    <input type="submit" onclick="rot13();" />
 </form>
 
 <script>
-function othername() {
-    var input = document.getElementById("userInput").value;
-    alert(input);
+function rot13() {
+    var str = document.getElementById("userInput").value;
+      arr = str.split("");
+  for (i = 0; i < str.length; i++) {
+    arr[i] = arr[i].charCodeAt();
+  }
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > 90 || arr[i] < 65) {
+      arr[i] = arr[i];
+    } else if (arr[i] + 13 <= 90) {
+      arr[i] = arr[i] + 13;
+    } else if (arr[i] + 13 > 90) {
+      arr[i] = arr[i] + 13 - 90 + 64;
+    }
+  } 
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = String.fromCharCode(arr[i]);
+  }
+  str = arr.join("");
+    alert(str);
 }
 </script>
 </div>
