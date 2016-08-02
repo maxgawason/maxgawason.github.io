@@ -35,10 +35,10 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
-                  <li><a href="#about">About</a></li>
-                  <li><a href="climbingGallery.html">Climbing Gallery</a></li>
-                  <li><a href="climbingBlog.html">Climbing Blog</a></li>
-                  <li><a href="crypto.html">Cryptography</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="climbingGallery.html">Climbing Gallery</a></li>
+                    <li><a href="climbingBlog.html">Climbing Blog</a></li>
+                    <li><a href="crypto.html">Cryptography</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -107,7 +107,7 @@
                     document.getElementById("rot13EncrypterOutput").innerHTML = str;
                 }
             </script>
-            <!--
+
             <h1>Caesar Decrypter</h1>
             <form id="form" onsubmit="return false;">
                 <input type="text" id="userInput3" />
@@ -116,9 +116,64 @@
             <p id="caesarDecrypterOutput"></p>
             <script>
                 function caesarDecrypter() {
+                    var dict = [HELLO, WORLD];
                     var str = document.getElementById("userinput3").value;
+                    str = str.toUpperCase();
+                    var arr = str.split("");
+                    for (i = 0; i < arr.length; i++) {
+                        arr[i] = arr[i].charCodeAt();
+                    }
+                    for (x = 1; x < 27; x++) {
+                        var arrBoolean = [];
+                        var arrValue = [];
+                        var arrFinal = [];
+                        for (i = 0; i < arr.length; i++) {
+                            if (arr[i] > 90 || arr[i] < 65) {
+                                arrValue.push(arr[i]);
+                            } else if (arr[i] + x <= 90) {
+                                arrValue.push(arr[i] + i);
+                            } else if (arr[i] + x > 90) {
+                                arrValue.push(arr[i] + x - 90 + 64);
+                            }
+                        }
+                        for (i = 0; i < arrValue.length; i++) {
+                            arrValue[i] = String.fromCharCode(arrValue[i]);
+                        }
+                        var y = 0;
+                        var z = 0;
+                        for (i = 0; i < arrValue.length; i++) {
+                            if (arrValue[y].indexOf(" ") != -1) {
+                                z = arrValue[y].indexOf(" ");
+                                var arrWord = []
+                                arrWord = arrValue[y: z];
+                                arrFinal.push(arrWord.join());
+                                y = arrValue[y].indexOf(" ");
+                            }
+                        }
+                        for (i = 0; i < arrFinal.length; i++) {
+                            for (a = 0; a < dict.length; i++) {
+                                if (arrFinal[i] == dict[a]) {
+                                    arrBoolean.push(true);
+                                } else if (arrFinal[i] == dict[dict.length - 1]) {
+                                    arrBoolean.push(false);
+                                }
+                            }
+                        }
+
+                        function isAllTrue() {
+                            for (i = 0; i < arrBoolean.length; i++) {
+                                if (arrBoolean[i] = false) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }
+                        if (isAllTrue()) {
+                            document.getElementById(caesarDecrypter).InnerHTML = arrFinal.join(" ")
+                        }
+                    }
             </script>
-          -->
+
         </div>
     </body>
 
